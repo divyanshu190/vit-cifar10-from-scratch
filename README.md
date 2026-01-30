@@ -46,6 +46,26 @@ python train.py
 
 *Note: Training logs and checkpoints will be saved to the current directory unless configured otherwise.*
 
+## ⚙️ Hyperparameters
+
+The model was trained with the following configuration to ensure stability and convergence:
+
+| Parameter | Value | Description |
+| :--- | :--- | :--- |
+| **Epochs** | 200 | Total training passes |
+| **Batch Size** | 128 | |
+| **Optimizer** | Adam | |
+| **Learning Rate** | 1e-3 → 1e-5 | Cosine Annealing |
+| **Weight Decay** | 5e-5 | Regularization |
+| **Warmup** | 5 epochs | Linear warmup |
+| **Label Smoothing** | 0.1 | Prevents overfitting |
+| **AutoAugment** | True | Strong data augmentation |
+| **Dropout** | 0.1 | Matches code default |
+| **Network Depth** | 7 layers | |
+| **Embed Dim** | 384 | Hidden size |
+| **Heads** | 12 | Attention heads |
+| **MLP Dim** | 1536 | 4x Expansion |
+
 ## 📊 Results
 
 The model was trained for 200 epochs using the Adam optimizer and a cosine annealing scheduler.
