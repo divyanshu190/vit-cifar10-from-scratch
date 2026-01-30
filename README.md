@@ -26,8 +26,8 @@ This project demonstrates that with a proper training strategy—specifically st
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/vit-cifar10.git](https://github.com/yourusername/vit-cifar10.git)
-   cd vit-cifar10
+   git clone https://github.com/divyanshu190/vit-cifar10-from-scratch
+   cd vit-cifar10-from-scratch
    ```
 
 2. **Install dependencies:**
