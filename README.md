@@ -1,9 +1,7 @@
 
 # Project Title
 
-Vision Transformer (ViT-Small) implemented completely from scratch in PyTorch (no pretrained weights).  
-Includes patch embedding, multi-head self-attention, MLP blocks, CLS token, cosine LR schedule, and strong data augmentation.  
-Trained on CIFAR-10 to achieve ~90% test accuracy after 200 epochs.
+Vision Transformer (ViT-Small) from Scratch on CIFAR-10
 
 ## Features
 - Implemented from scratch in PyTorch
