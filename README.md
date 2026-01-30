@@ -1,153 +1,115 @@
-# Vision Transformer (ViT-Small) on CIFAR-10 — Training from Scratch
+# Vision Transformer (ViT-Small) from Scratch on CIFAR-10
 
-This repository demonstrates how to train a Vision Transformer (ViT-Small) from scratch on the CIFAR-10 dataset using PyTorch and timm, without any ImageNet pretraining.
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg) ![Python](https://img.shields.io/badge/python-3.8%2B-blue) ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)
 
-The project shows that with a strong training strategy—specifically heavy data augmentation, Mixup/CutMix, Exponential Moving Average (EMA), and cosine learning rate scheduling—a transformer-based model can achieve competitive performance (~90% accuracy) on a small dataset like CIFAR-10.
+A Vision Transformer (ViT-Small) model trained from random initialization on the CIFAR-10 dataset using PyTorch, without using any ImageNet pre-trained weights.
+
+This project demonstrates that with a proper training strategy—specifically strong data augmentation and cosine learning rate scheduling—a transformer-based model can achieve competitive performance (~90% accuracy) on small datasets like CIFAR-10, challenging the inductive bias advantage typically held by CNNs.
 
 ---
 
 ## Key Features
 
-- Vision Transformer trained entirely from scratch (no pretrained weights)
-- ViT-Small architecture adapted for small-resolution images
-- Patch size reduced to 4x4 for effective tokenization of 32x32 images
-- Strong data augmentation using RandomCrop, HorizontalFlip, and RandAugment
-- Mixup and CutMix for improved generalization with soft-label supervision
-- Exponential Moving Average (EMA) for stable evaluation
-- AdamW optimizer with cosine annealing learning rate schedule
-
----
-
-## Model Architecture
-
-- Model: Vision Transformer (ViT-Small)
-- Image Size: 32 x 32
-- Patch Size: 4 x 4
-- Number of Patches: 8 x 8 = 64
-- Embedding Dimension: 384
-- Attention Heads: 12
-- Transformer Blocks: ViT-Small configuration
-- Classifier: CLS token with linear head
-- Number of Classes: 10 (CIFAR-10)
-
-Reducing the patch size is critical for CIFAR-10. Using the default 16x16 patch size would result in too few tokens and limit the effectiveness of self-attention.
-
----
-
-## Dataset
-
-CIFAR-10:
-- 60,000 RGB images
-- 10 classes
-- Image resolution: 32 x 32
-
-The dataset is automatically downloaded using torchvision.
-
----
-
-## Training Strategy
-
-### Data Augmentation
-- Random Crop with padding
-- Random Horizontal Flip
-- RandAugment
-
-Strong augmentation is essential for Vision Transformers due to the lack of convolutional inductive bias.
-
----
-
-### Mixup and CutMix
-- Enabled during training
-- Produces soft labels
-- Improves robustness and generalization
-
-Loss Function:
-- SoftTargetCrossEntropy
-
----
-
-### Exponential Moving Average (EMA)
-- Maintains a moving average of model parameters
-- EMA weights are used for evaluation
-- Improves training stability and final accuracy
-
----
-
-### Optimization
-
-- Optimizer: AdamW
-- Learning Rate: 3e-4
-- Weight Decay: 0.05
-- Scheduler: Cosine Annealing Learning Rate
-- Epochs: 200
-
-This configuration follows best practices for training transformer-based vision models.
+* **Training from Scratch:** Model trained without any pre-trained weights.
+* **ViT-Small Architecture:** Adapted for CIFAR-10 with smaller patch size.
+* **Optimized Training:** Utilizes cosine learning rate scheduling and strong data augmentation.
+* **High Performance:** Achieves **~90% Top-1 Accuracy** on the CIFAR-10 test set after 200 epochs.
 
 ---
 
 ## Project Structure
 
+```plaintext
+├── train.py           # Training loop, data loading, and evaluation
+├── requirements.txt   # Python dependencies
+└── README.md          # Project documentation
 ```
 
-.
-├── train.py          # Training loop and evaluation
-├── requirements.txt  # Python dependencies
-├── data/             # CIFAR-10 dataset (auto-downloaded)
-└── README.md         # Project documentation
+---
 
-```
+## Requirements
+
+* Python **3.8 or higher**
+* PyTorch **2.0 or higher**
+* torchvision
+* timm
 
 ---
 
 ## Installation
 
-Install dependencies:
+1. **Clone the repository:**
 
-```
+   ```bash
+   git clone https://github.com/divyanshu190/vit-cifar10-from-scratch
+   cd vit-cifar10-from-scratch
+   ```
 
-pip install torch torchvision timm
+2. **Install dependencies:**
+   It is recommended to use a virtual environment.
 
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
 
 ## Usage
 
-To train the model from scratch:
+To start training the model from scratch, run the training script. This will download the CIFAR-10 dataset automatically if it is not present.
 
-```
-
+```bash
 python train.py
-
 ```
 
-The script will:
-- Download the CIFAR-10 dataset automatically
-- Train ViT-Small for 200 epochs
-- Evaluate performance using EMA weights after each epoch
+*Training logs and evaluation results are printed after each epoch.*
+
+---
+
+## Hyperparameters
+
+The model was trained with the following configuration:
+
+| Parameter         | Value       | Description             |
+| :---------------- | :---------- | :---------------------- |
+| Epochs            | 200         | Total training passes   |
+| Batch Size        | 128         |                         |
+| Optimizer         | AdamW       | Improved regularization |
+| Learning Rate     | 3e-4        | Cosine annealing        |
+| Weight Decay      | 0.05        | Regularization          |
+| Data Augmentation | RandAugment | Strong augmentation     |
+| Patch Size        | 4 × 4       | CIFAR-10 adaptation     |
+| Embed Dim         | 384         | Hidden size             |
+| Heads             | 12          | Attention heads         |
+| MLP Dim           | 1536        | 4× expansion            |
 
 ---
 
 ## Results
 
-- Dataset: CIFAR-10
-- Model: ViT-Small (timm)
-- Training: From scratch
-- Epochs: 200
-- Test Accuracy: Approximately 88–90%
+The model was trained for 200 epochs using AdamW and cosine annealing learning rate scheduling.
 
-Exact results may vary depending on hardware and random seed.
+| Metric        | Value     |
+| :------------ | :-------- |
+| Dataset       | CIFAR-10  |
+| Model         | ViT-Small |
+| Epochs        | 200       |
+| Test Accuracy | ~88–90%   |
 
 ---
 
 ## References
 
-- Dosovitskiy et al., "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale"
-  https://arxiv.org/abs/2010.11929
+* Dosovitskiy et al., *An Image is Worth 16×16 Words: Transformers for Image Recognition at Scale*
+  [https://arxiv.org/abs/2010.11929](https://arxiv.org/abs/2010.11929)
 
-- timm: PyTorch Image Models
-  https://github.com/huggingface/pytorch-image-models
+* timm: PyTorch Image Models
+  [https://github.com/huggingface/pytorch-image-models](https://github.com/huggingface/pytorch-image-models)
 
-- CIFAR-10 Dataset
+---
+
+## License
+
+This project is licensed under the MIT License.
 
 ---
