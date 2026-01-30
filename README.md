@@ -1,4 +1,3 @@
-```md
 # Vision Transformer (ViT-Small) on CIFAR-10 — Training from Scratch
 
 This repository demonstrates how to train a Vision Transformer (ViT-Small) from scratch on the CIFAR-10 dataset using PyTorch and timm, without any ImageNet pretraining.
