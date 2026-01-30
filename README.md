@@ -78,8 +78,8 @@ The model was trained with the following configuration:
 | Batch Size        | 128         |                         |
 | Optimizer         | AdamW       | Improved regularization |
 | Learning Rate     | 3e-4        | Cosine annealing        |
-| Weight Decay      | 0.05        | Regularization          |
-| Data Augmentation | RandAugment | Strong augmentation     |
+| Weight Decay      | 5e-5        | Regularization          |
+| Data Augmentation | transforms.AutoAugment | Strong augmentation     |
 | Patch Size        | 4 × 4       | CIFAR-10 adaptation     |
 | Embed Dim         | 384         | Hidden size             |
 | Heads             | 12          | Attention heads         |
