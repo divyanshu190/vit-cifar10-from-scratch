@@ -20,6 +20,8 @@ This project demonstrates that with a proper training strategy—specifically st
 ## Project Structure
 
 ```plaintext
+├── vit.py             # Original model architecture definition (ViT-Small)
+├── vit_new.py         # Updated/Optimized model architecture
 ├── train.py           # Training loop, data loading, and evaluation
 ├── requirements.txt   # Python dependencies
 └── README.md          # Project documentation
