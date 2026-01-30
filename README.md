@@ -54,13 +54,11 @@ The model was trained with the following configuration to ensure stability and c
 | :--- | :--- | :--- |
 | **Epochs** | 200 | Total training passes |
 | **Batch Size** | 128 | |
-| **Optimizer** | Adam | |
-| **Learning Rate** | 1e-3 → 1e-5 | Cosine Annealing |
+| **Optimizer** | AdamW | Improved regularization |
+| **Learning Rate** | 3e-4 | Cosine Annealing |
 | **Weight Decay** | 5e-5 | Regularization |
-| **Warmup** | 5 epochs | Linear warmup |
-| **Label Smoothing** | 0.1 | Prevents overfitting |
 | **AutoAugment** | True | Strong data augmentation |
-| **Dropout** | 0.1 | Matches code default |
+| **Dropout** | 0.1 | Prevent overfitting |
 | **Network Depth** | 7 layers | |
 | **Embed Dim** | 384 | Hidden size |
 | **Heads** | 12 | Attention heads |
