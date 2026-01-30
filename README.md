@@ -1,26 +1,36 @@
-# Vision Transformer (ViT) from Scratch on CIFAR-10
 
-This project implements a Vision Transformer (ViT-Small) completely from scratch in PyTorch and trains it on the CIFAR-10 dataset to achieve ~90% test accuracy.
+# Project Title
+
+Vision Transformer (ViT-Small) implemented completely from scratch in PyTorch (no pretrained weights).  
+Includes patch embedding, multi-head self-attention, MLP blocks, CLS token, cosine LR schedule, and strong data augmentation.  
+Trained on CIFAR-10 to achieve ~90% test accuracy after 200 epochs.
 
 ## Features
-- Pure PyTorch implementation (no pretrained models)
-- Patch embedding, MHSA, MLP blocks, CLS token
-- Cosine LR scheduler and data augmentation
-- ~90% CIFAR-10 accuracy
-
+- Implemented from scratch in PyTorch
+- Patch Embedding, Multi-Head Self-Attention, MLP blocks, CLS token
+- Cosine LR scheduler, strong data augmentation
+- ~90% CIFAR-10 test accuracy
 ## Project Structure
-vit.py — model  
-train.py — training loop  
-requirements.txt — dependencies  
+vit.py — model definition
+train.py — training loop
+requirements.txt — dependencies
+## Installation
 
-## Setup
-pip install -r requirements.txt
+Install my-project with npm
 
-## Train
+```bash
+  pip install -r requirements.txt
+```
+    
+## Usage/Examples
+
+```javascript
 python train.py
+```
 
-## Result
-~90% Test Accuracy after 200 epochs
 
+## Results
+~90% test accuracy after 200 epochs on CIFAR-10
 ## License
-MIT
+
+[MIT](https://choosealicense.com/licenses/mit/)
