@@ -31,8 +31,6 @@ This project demonstrates that with a proper training strategy—specifically st
 
 ## Requirements
 
-* Python **3.8 or higher**
-* PyTorch **2.0 or higher**
 * torchvision
 * timm
 
